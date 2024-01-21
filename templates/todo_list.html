@@ -1,0 +1,32 @@
+<!-- todo_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Todo List</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Todo App</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <section class="todo-list">
+        <h2>Your Todo List</h2>
+
+        {% for todo in todos %}
+            <div class="todo-item">
+                <h3>{{ todo.title }}</h3>
+                <p>{{ todo.description }}</p>
+            </div>
+        {% endfor %}
+
+        <a href="{{ url_for('add_todo') }}" class="btn">Add Todo</a>
+    </section>
+</body>
+</html>
